@@ -18,4 +18,4 @@ var rateRepository = function(repository, rating) {
 exports.ADD_REPOSITORY = ADD_REPOSITORY;
 exports.addRepository = addRepository;
 exports.RATE_REPOSITORY = RATE_REPOSITORY;
-exports rateRepository = rateRepository;
+exports.rateRepository = rateRepository;
