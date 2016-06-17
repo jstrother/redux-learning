@@ -22,7 +22,7 @@ var repositoryReducer = function(state, action) {
 		if (index === -1) {
 			throw new Error('Could not find repository');
 		}
-		var before = sate.slice(0, i);
+		var before = state.slice(0, i);
 		var after = state.slice(i + 1);
 		var newRepository = Object.assign({}, repository, {rating: action.rating});
 		return before.concat(newRepository, after);

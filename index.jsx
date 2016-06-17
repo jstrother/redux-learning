@@ -6,6 +6,7 @@ const store = require('./store.js');
 const RepositoryList = require('./repository-list.jsx');
 
 document.addEventListener('DOMContentLoaded', function() {
+	console.log('loaded');
 	ReactDOM.render(
 		<Provider store={store}>
 			<RepositoryList />

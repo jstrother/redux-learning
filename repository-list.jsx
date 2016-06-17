@@ -2,6 +2,7 @@ const React = require('react');
 const connect = require('react-redux').connect;
 
 const Repository = require('./repository.jsx');
+const actions = require('./actions.js');
 
 var RepositoryList = React.createClass({
 	addRepository: function() {

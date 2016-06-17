@@ -2,6 +2,7 @@ const React = require('react');
 const connect = require('react-redux').connect;
 
 const StarRater = require('./star-rater.jsx');
+const actions = require('./actions.js');
 
 var Repository = React.createClass({
 	changeRating: function(rating) {
