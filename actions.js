@@ -18,16 +18,16 @@ var rateRepository = function(repository, rating) {
 };
 
 var FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
-var fetchDescriptionSuccess = function(repository, descrption) {
+var fetchDescriptionSuccess = function(repository, description) {
 	return {
 		type: FETCH_DESCRIPTION_SUCCESS,
 		repository: repository,
-		descrption: descrption
+		description: description
 	};
 };
 
 var FETCH_DESCRIPTION_ERROR = 'FETCH_DESCRIPTION_ERROR';
-var fetchDescriptionError = function(repository, descrption) {
+var fetchDescriptionError = function(repository, error) {
 	return {
 		type: FETCH_DESCRIPTION_ERROR,
 		repository: repository,
@@ -36,8 +36,10 @@ var fetchDescriptionError = function(repository, descrption) {
 };
 
 var fetchDescription = function(repository) {
+	console.log('repository:', repository);
 	return function(dispatch) {
 		var url = 'https://api.github.com/repos/' + repository;
+		console.log('url:', url);
 		return fetch(url).then(function(response) {
 			if (response.state < 200 || response.status >= 300) {
 				var error = new Error(resonse.statusText);
@@ -47,12 +49,14 @@ var fetchDescription = function(repository) {
 			return response;
 		})
 		.then(function(response) {
+			console.log('response:', response);
 			return response.json()
 		})
 		.then(function(data) {
-			var descrption = data.descrption;
+			var description = data.description;
+			console.log('description:', description);
 			return dispatch(
-				fetchDescriptionSuccess(repository, descrption)
+				fetchDescriptionSuccess(repository, description)
 			);
 		})
 		.catch(function(error) {

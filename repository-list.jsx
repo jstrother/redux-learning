@@ -8,6 +8,7 @@ var RepositoryList = React.createClass({
 	addRepository: function() {
 		var repositoryName = this.refs.repositoryName.value;
 		this.props.dispatch(actions.addRepository(repositoryName));
+		this.refs.repositoryName.value='';
 	},
 	render: function() {
 		var repositories = this.props.repositories.map(function(repository) {
